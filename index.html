@@ -10,10 +10,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<style>
+		* {
+			box-sizing: border-box; 
+		}
 		html, body {
 			margin: 0;
 			padding: 0;
 			font-family: 'Open Sans', sans-serif;
+			-webkit-font-smoothing: antialiased;
+		}
+
+		.brand {
+			font-weight: 700;
 		}
 
 		.header {
@@ -32,12 +40,155 @@
 			align-items: center;
 			justify-content: space-between;
 			width: 100%;
-			max-width: 900px;
+			max-width: 800px;
 			margin: 0 50px;
+		}
+
+		.nav {
+			display: none;
+		}
+
+		.nav ul {
+			margin: 0;
+			list-style-type: none;
 		}
 
 		.nav ul li {
 			float: left;
+			margin-right: 10px;
+		}
+
+		.nav ul li a {
+			text-decoration: none;
+			color: black;
+			font-size: 14px;
+			color: #333;
+		}
+
+		.hamburger {
+			width: 30px;
+			height: 22px;
+			position: relative;
+		}
+
+		.hamburger input {
+			z-index: 101;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			opacity: 0;
+			cursor: pointer;
+		}
+
+		.hamburger span {
+			z-index: 100;
+			position: absolute;
+			width: 30px;
+			height: 4px;
+			display: block;
+			background-color: black;
+			border-radius: 2px;
+			transition: ease all 0.2s
+		}
+
+		.hamburger span:nth-child(2) {
+			top: 0;
+		}
+
+		.hamburger span:nth-child(3) {
+			top: 9px;
+		}
+
+		.hamburger span:nth-child(4) {
+			top: 18px;
+		}
+
+		.hamburger input:checked ~ span:nth-child(2) {
+			transform: translateY(9px) rotate(45deg);
+		}
+
+		.hamburger input:checked ~ span:nth-child(3) {
+			opacity: 0
+		}
+
+		.hamburger input:checked ~ span:nth-child(4) {
+			transform: translateY(-9px) rotate(-45deg);
+		}
+
+		.hamburger ul {
+			z-index: 99;
+			position: fixed;
+			top: 0;
+			right: -100vw;
+			width: 100vw;
+			height: 100vh;
+			background-color: #eee;
+			margin: 0;
+			padding: 100px 40px;
+			list-style-type: none;
+			transition: ease all 0.2s;
+		}
+
+		.hamburger input:checked ~ ul {
+			right: 0;
+		}
+
+		.hamburger li {
+			margin-bottom: 20px;
+		}
+
+		.hamburger li a {
+			font-size: 22px;
+			text-decoration: none;
+			color: #232323;
+		}
+
+		@media screen and (min-width: 727px) {
+		    .hamburger {
+		    	display: none;
+		    }
+		    .nav {
+		    	display: block;
+		    }
+		}
+
+		.block {
+			width: 100vw;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 20px;
+			flex-direction: column;
+		}
+
+		.block.cover {
+			height: 100vh;
+			width: 100vw;
+			background-color: rgba(0,0,0,0.3);
+		}
+
+		.block.cover img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+  			object-fit: cover;
+  			z-index: -1;
+		}
+
+		.block.cover h1, p {
+			color: white;
+		}
+
+		.block.cover h1 {
+			font-size: 70px;
+			margin: 0 0 12px 0;
+		}
+
+		.block.cover p {
+			font-size: 20px;
+			margin: 0;
 		}
 
 	</style>
@@ -48,15 +199,38 @@
 <div class="header">
 	<div class="navbar">
 		<span class="brand">LKW Carpentry</span>
+
 		<div class="nav">
 			<ul>
-				<li><a href="#">Home</a></li>
 				<li><a href="#">About Me</a></li>
 				<li><a href="#">Portfolio</a></li>
-				<li><a href="#">Contact Me</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</div>
+
+		<div class="hamburger">
+			<input type="checkbox">
+			<span></span>
+			<span></span>
+			<span></span>
+			<ul>
+				<li><a href="#">About Me</a></li>
+				<li><a href="#">Portfolio</a></li>
+				<li><a href="#">Contact</a></li>
 			</ul>
 		</div>
 	</div>
+</div>
+
+<div class="block cover">
+	<img src="./IMG_1604.JPG">
+	<h1>Roofs</h1>
+	<p>Lee Williams</p>
+</div>
+
+<div class="block">
+	<h1>Who are we?</h1>
+	<p>LKW Carpentry lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet</p>
 </div>
 
 </body>
